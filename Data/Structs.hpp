@@ -30,6 +30,7 @@ struct sBlocksInfo
 	std::vector<sBlockCoord> coordAnotherTrancalancy;
 
 	int countNQ;
+	double valueNQ;
 	std::vector<sBlockCoord> coordNQ;
 };
 
