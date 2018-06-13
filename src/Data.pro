@@ -31,7 +31,8 @@ HEADERS += \
     gui/CFormsCreator.hpp \
     gui/BrozeFileDialog.hpp \
     gui/DataEditDialog.hpp \
-    gui/MainWindow.hpp
+    gui/MainWindow.hpp \
+    gui/Form.hpp
 
 SOURCES += \
     fileProcessingCore/src/CCUBDeserializator.cpp \
@@ -41,9 +42,11 @@ SOURCES += \
     gui/CFormsCreator.cpp \
     gui/BrozeFileDialog.cpp \
     gui/DataEditDialog.cpp \
-    gui/MainWindow.cpp
+    gui/MainWindow.cpp \
+    gui/Form.cpp
 
 FORMS += \
     gui/BrozeFileDialog.ui \
     gui/DataEditDialog.ui \
-    gui/MainWindow.ui
+    gui/MainWindow.ui \
+    gui/Form.ui

@@ -36,7 +36,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
+          <widget class="QLineEdit" name="lineEdit_Count_CoordBy_X">
            <property name="maximumSize">
             <size>
              <width>167</width>
@@ -54,7 +54,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="pushButton_SetCount_CoordBy_X">
            <property name="font">
             <font>
              <family>Times New Roman</family>
@@ -114,12 +114,12 @@
             </font>
            </property>
            <property name="text">
-            <string>Число елементов по оси X :</string>
+            <string>Число елементов по оси Y :</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2">
+          <widget class="QLineEdit" name="lineEdit_Count_CoordBy_Y">
            <property name="maximumSize">
             <size>
              <width>167</width>
@@ -134,7 +134,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="pushButton_SetCount_CoordBy_Y">
            <property name="font">
             <font>
              <family>Times New Roman</family>
@@ -194,12 +194,12 @@
             </font>
            </property>
            <property name="text">
-            <string>Число елементов по оси X :</string>
+            <string>Число елементов по оси Z :</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_3">
+          <widget class="QLineEdit" name="lineEdit_Count_CoordBy_Z">
            <property name="maximumSize">
             <size>
              <width>167</width>
@@ -214,7 +214,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="pushButton_SetCount_CoordBy_Z">
            <property name="font">
             <font>
              <family>Times New Roman</family>
@@ -283,7 +283,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_4"/>
+          <widget class="QLineEdit" name="lineEdit_MainTranscalancy"/>
          </item>
          <item>
           <spacer name="horizontalSpacer_7">
@@ -331,7 +331,19 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_5"/>
+          <widget class="QPushButton" name="pushButton_SetHeatCoefficient">
+           <property name="font">
+            <font>
+             <family>Times New Roman</family>
+             <pointsize>13</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>  Задать параметры  </string>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_8">
@@ -366,7 +378,19 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_6"/>
+          <widget class="QPushButton" name="pushButton_SetHoleHeatCollection">
+           <property name="font">
+            <font>
+             <family>Times New Roman</family>
+             <pointsize>13</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>  Задать параметры  </string>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_3">
@@ -414,7 +438,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_7">
+          <widget class="QLineEdit" name="lineEdit_TemperatureEnvironment">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -465,10 +489,10 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_8"/>
+          <widget class="QLineEdit" name="lineEdit_CuntEmptyBlocks"/>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="pushButton_SetEmptyBlocks">
            <property name="font">
             <font>
              <family>Times New Roman</family>
@@ -541,7 +565,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_9"/>
+          <widget class="QLineEdit" name="lineEdit_countAnotherTrancalancy"/>
          </item>
          <item>
           <spacer name="horizontalSpacer_14">
@@ -557,7 +581,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QPushButton" name="pushButton_SetcountAnotherTrancalancy">
            <property name="font">
             <font>
              <family>Times New Roman</family>
@@ -620,10 +644,10 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_10"/>
+          <widget class="QLineEdit" name="lineEdit_countNQ"/>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="pushButton_SetCountNQ">
            <property name="font">
             <font>
              <family>Times New Roman</family>
@@ -696,7 +720,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_11">
+          <widget class="QLineEdit" name="lineEdit_CountFlatNp">
            <property name="maximumSize">
             <size>
              <width>166</width>
@@ -807,22 +831,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButton_9</sender>
-   <signal>clicked()</signal>
-   <receiver>DataEditDialog</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>50</x>
-     <y>496</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>490</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

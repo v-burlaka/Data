@@ -2,7 +2,7 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
-#include "../fileProcessingCore/api/Structs.hpp"
+
 
 namespace Ui { class MainWindow;}
 class BrozeFileDialog;
@@ -21,12 +21,8 @@ private slots:
    void on_pushButton_CreateNewFile_clicked();
 
 private:
-   void init();
-
-private:
    Ui::MainWindow *ui;
    BrozeFileDialog* pBrozeFileDialog;
-   sMainInfo mMainInfo;
 };
 
 #endif // MAINWINDOW_HPP
