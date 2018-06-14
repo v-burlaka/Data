@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Structs.hpp"
+#include "../api/Structs.hpp"
 
 class ISerializator
 {

@@ -1,7 +1,7 @@
 #ifndef CCUBSERIALIZATOR_HPP
 #define CCUBSERIALIZATOR_HPP
 
-#include "ISerializator.hpp"
+#include "../api/ISerializator.hpp"
 
 class CCUBSerializator : public ISerializator
 {

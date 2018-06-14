@@ -1,6 +1,6 @@
 #include <fstream>
 
-#include "CCUBSerializator.hpp"
+#include "../api/CCUBSerializator.hpp"
 
 CCUBSerializator::CCUBSerializator()
 {
@@ -116,7 +116,7 @@ void CCUBSerializator::anotherTranscalancy(const std::vector<sBlockCoord>& info,
 
 		for (int i = 0; i < info.size(); ++i)
 		{
-			file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n";
+         file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n";
 			file << " " << info[i].startCoord.X << " " << info[i].endCoord.X << " "
 				<< info[i].startCoord.Y << " " << info[i].endCoord.Y << " "
 				<< info[i].startCoord.Z << " " << info[i].endCoord.Z << " "
@@ -175,7 +175,7 @@ void CCUBSerializator::coordNQ(const std::vector<sBlockCoord>& info, const std::
 
 		file << "\nКоординаты i-го пустого источника и велечина Qv*10E-6:\n\n";
 
-		for (int i = 0; i < info.size(); ++i)
+      for (int i = 0; i < info.size(); ++i)
 		{
 			file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n";
 			file << " " << info[i].startCoord.X << " " << info[i].endCoord.X << " "
