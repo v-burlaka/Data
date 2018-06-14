@@ -8,16 +8,11 @@ struct sXYZ
 	int X;
 	int Y;
 	int Z;
-
-	sXYZ(int x, int y, int z);
 };
-
-sXYZ::sXYZ(int x, int y, int z): X(x) , Y(y), Z(z)
-{}
 
 struct sBlockCoord
 {
-	sXYZ stratCoord;
+	sXYZ startCoord;
 	sXYZ endCoord;
 };
 
@@ -27,10 +22,11 @@ struct sBlocksInfo
 	std::vector<sBlockCoord> coordEmptyBlocks;
 
 	int countAnotherTrancalancy;
+	std::vector<double> valueAnotherTrancalancy;
 	std::vector<sBlockCoord> coordAnotherTrancalancy;
 
 	int countNQ;
-	double valueNQ;
+	std::vector<double> valueNQ;
 	std::vector<sBlockCoord> coordNQ;
 };
 
