@@ -1,11 +1,13 @@
 #include "DataEditDialog.hpp"
 #include "ui_DataEditDialog.h"
-
+#include "gui/CSetBoxSettingDialog.hpp"
 
 DataEditDialog::DataEditDialog(QWidget *parent)
    : QDialog(parent)
    , mParent(parent)
    , ui(new Ui::DataEditDialog())
+   , settingEmptyBlocksDialog(new CSetBoxSettingDialog("Empty Bloks Settings" , this))
+   , settingTrancalancyBlocksDialog(new CSetBoxSettingDialog("Empty Trancalancy Settings" , this, true))
 {
    ui->setupUi(this);
 
@@ -87,4 +89,26 @@ void DataEditDialog::on_pushButton_9_clicked()
 {
    this->close();
    mParent->show();
+}
+
+void DataEditDialog::on_pushButton_SetCount_CoordBy_X_clicked()
+{
+
+}
+
+void DataEditDialog::on_pushButton_SetHeatCoefficient_clicked()
+{
+
+}
+
+void DataEditDialog::on_pushButton_SetcountAnotherTrancalancy_clicked()
+{
+   settingTrancalancyBlocksDialog->setCountOfCoords(ui->lineEdit_CuntEmptyBlocks->text().toInt());
+   settingTrancalancyBlocksDialog->showForm();
+}
+
+void DataEditDialog::on_pushButton_SetEmptyBlocks_clicked()
+{
+   settingEmptyBlocksDialog->setCountOfCoords(ui->lineEdit_CuntEmptyBlocks->text().toInt());
+   settingEmptyBlocksDialog->showForm();
 }

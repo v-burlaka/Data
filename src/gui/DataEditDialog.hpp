@@ -5,7 +5,8 @@
 #include "../fileProcessingCore/api/Structs.hpp"
 
 namespace Ui { class DataEditDialog; }
-
+class CSetCoordDialog;
+class CSetBoxSettingDialog;
 
 class DataEditDialog : public QDialog
 {
@@ -20,6 +21,14 @@ public:
 private slots:
    void on_pushButton_9_clicked();
 
+   void on_pushButton_SetCount_CoordBy_X_clicked();
+
+   void on_pushButton_SetHeatCoefficient_clicked();
+
+   void on_pushButton_SetcountAnotherTrancalancy_clicked();
+
+   void on_pushButton_SetEmptyBlocks_clicked();
+
 private:
    void initMainInfo();
    void initEditLinesByDefault();
@@ -27,6 +36,11 @@ private:
 private:
    Ui::DataEditDialog *ui;
    QWidget* mParent;
+   CSetCoordDialog* pSetXCoordDialog;
+   CSetCoordDialog* pSetYCoordDialog;
+   CSetCoordDialog* pSetZCoordDialog;
+   CSetBoxSettingDialog* settingEmptyBlocksDialog;
+   CSetBoxSettingDialog* settingTrancalancyBlocksDialog;
    sMainInfo mMainInfo;
 
 };

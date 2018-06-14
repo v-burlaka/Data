@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+CONFIG   += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,22 +29,26 @@ HEADERS += \
     fileProcessingCore/api/IDeserializator.hpp \
     fileProcessingCore/api/ISerializator.hpp \
     fileProcessingCore/api/Structs.hpp \
-    gui/CFormsCreator.hpp \
     gui/BrozeFileDialog.hpp \
     gui/DataEditDialog.hpp \
     gui/MainWindow.hpp \
-    gui/Form.hpp
+    gui/Form.hpp \
+    gui/CSetCoordDialog.hpp \
+    gui/CTrancalancyBlockDialog.hpp \
+    gui/CSetBoxSettingDialog.hpp
 
 SOURCES += \
     fileProcessingCore/src/CCUBDeserializator.cpp \
     fileProcessingCore/src/CCUBSerializator.cpp \
     fileProcessingCore/src/ISerializator.cpp \
     main.cpp \
-    gui/CFormsCreator.cpp \
     gui/BrozeFileDialog.cpp \
     gui/DataEditDialog.cpp \
     gui/MainWindow.cpp \
-    gui/Form.cpp
+    gui/Form.cpp \
+    gui/CSetCoordDialog.cpp \
+    gui/CTrancalancyBlockDialog.cpp \
+    gui/CSetBoxSettingDialog.cpp
 
 FORMS += \
     gui/BrozeFileDialog.ui \
