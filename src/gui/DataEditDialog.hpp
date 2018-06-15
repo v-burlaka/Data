@@ -7,6 +7,9 @@
 namespace Ui { class DataEditDialog; }
 class CSetCoordDialog;
 class CSetBoxSettingDialog;
+class CCUBDeserializator;
+class CCUBSerializator;
+
 
 class DataEditDialog : public QDialog
 {
@@ -16,7 +19,8 @@ public:
    explicit DataEditDialog(QWidget *parent = 0);
    ~DataEditDialog();
 
-   void setMainInfo(const sMainInfo& MainInfo);
+   void setMainInfo(const std::string& URL);
+   void createFail(const QString &URL);
 
 private slots:
    void on_pushButton_9_clicked();
@@ -28,6 +32,8 @@ private slots:
    void on_pushButton_SetcountAnotherTrancalancy_clicked();
 
    void on_pushButton_SetEmptyBlocks_clicked();
+
+   void on_Save_clicked();
 
 private:
    void initMainInfo();
@@ -42,7 +48,8 @@ private:
    CSetBoxSettingDialog* settingEmptyBlocksDialog;
    CSetBoxSettingDialog* settingTrancalancyBlocksDialog;
    sMainInfo mMainInfo;
-
+   CCUBDeserializator* pDeserealizator;
+   CCUBSerializator* pSerializator;
 };
 
 #endif // DATAEDITDIALOG_HPP

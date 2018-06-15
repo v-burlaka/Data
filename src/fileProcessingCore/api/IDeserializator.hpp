@@ -3,31 +3,27 @@
 
 #include <string>
 
-struct sMainInfo;
+#include "Structs.hpp"
 
 class IDeserializator
 {
 public:
-   IDeserializator() {}
-   virtual ~IDeserializator() = 0;
+	IDeserializator() {}
+	~IDeserializator() = default;
 
-   virtual bool setURL(const std::string& URL) = 0;
-   virtual bool getIsValid() const = 0;
+	virtual sMainInfo execute() = 0;
+	virtual void setURL(const std::string& URL) = 0;
 
 private:
-   virtual void baseCoord(sMainInfo& mainInfo) const = 0;
-   virtual void emptyBlocks(sMainInfo& mainInfo) const = 0;
-   virtual void mainTranscalancy(sMainInfo& mainInfo) const = 0;
-   virtual void anotherTranscalancy(sMainInfo& mainInfo) const = 0;
-   virtual void heatCoefficient(sMainInfo& mainInfo) const = 0;
-   virtual void holeHeatCoefficient(sMainInfo& mainInfo) const = 0;
-   virtual void coordNQ(sMainInfo& mainInfo) const = 0;
-   virtual void flatNp(sMainInfo& mainInfo) const = 0;
-   virtual void temperature(sMainInfo& mainInfo) const = 0;
+	virtual void baseCoord() = 0;
+	virtual void emptyBlocks() = 0;
+	virtual void mainTranscalancy() = 0;
+	virtual void anotherTranscalancy() = 0;
+	virtual void heatCoefficient() = 0;
+	virtual void holeHeatCoefficient() = 0;
+	virtual void coordNQ() = 0;
+	virtual void flatNp() = 0;
+	virtual void temperature() = 0;
 };
-#endif // IDESERIALIZATOR_HPP
 
-IDeserializator::~IDeserializator()
-{
-
-}
+#endif // !IDESERIALIZATOR_HPP

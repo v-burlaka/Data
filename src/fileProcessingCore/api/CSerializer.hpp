@@ -15,8 +15,8 @@ public:
 	void serialize(const sMainInfo& info, const std::string& URL) const;
 	sMainInfo deserialize(const std::string URL) const;
 private:
-	std::unique_ptr<ISerializator>   mSerializator;
-	std::unique_ptr<IDeserializator> mDeserializator;
+    std::shared_ptr<ISerializator>   mSerializator;
+    std::shared_ptr<IDeserializator> mDeserializator;
 };
 
 #endif // !CSERIALIZER_HPP

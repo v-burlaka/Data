@@ -820,7 +820,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_7">
+      <widget class="QPushButton" name="Save">
        <property name="text">
         <string>Сохранить</string>
        </property>

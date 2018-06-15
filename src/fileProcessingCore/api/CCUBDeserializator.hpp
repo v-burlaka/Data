@@ -1,35 +1,39 @@
 #ifndef CCUBDESERIALIZATOR_HPP
 #define CCUBDESERIALIZATOR_HPP
 
-#include"../api/IDeserializator.hpp"
-#include <fstream>
+#include "IDeserializator.hpp"
+#include "Helper.hpp"
 
 class CCUBDeserializator : public IDeserializator
 {
 public:
-   CCUBDeserializator();
-   explicit CCUBDeserializator(const std::string& URL);
+	CCUBDeserializator();
+	~CCUBDeserializator();
 
-   virtual ~CCUBDeserializator();
-
-   virtual bool setURL(const std::string& URL) override;
-   virtual bool getIsValid() const override;
-
-   virtual void baseCoord(sMainInfo& mainInfo) const;
-   virtual void emptyBlocks(sMainInfo& mainInfo) const;
-   virtual void mainTranscalancy(sMainInfo& mainInfo) const;
-   virtual void anotherTranscalancy(sMainInfo& mainInfo) const;
-   virtual void heatCoefficient(sMainInfo& mainInfo) const;
-   virtual void holeHeatCoefficient(sMainInfo& mainInfo) const;
-   virtual void coordNQ(sMainInfo& mainInfo) const;
-   virtual void flatNp(sMainInfo& mainInfo) const;
-   virtual void temperature(sMainInfo& mainInfo) const;
+	virtual sMainInfo execute() override;
+   virtual void setURL(const std::string& URL) override;
 
 private:
-   std::ifstream mReader;
-   bool isURLValid;
+	virtual void baseCoord() override;
+	virtual void emptyBlocks() override;
+	virtual void mainTranscalancy() override;
+	virtual void anotherTranscalancy() override;
+	virtual void heatCoefficient() override;
+	virtual void holeHeatCoefficient() override;
+	virtual void coordNQ() override;
+	virtual void flatNp() override;
+	virtual void temperature() override;
+
+	void writeBuffer();
+	double writeNumber(int& index) const;
+	void toNextString(int& index);
+	void toNextDigit(int& index);
+	void fillEmptyBlocks(std::vector<sBlockCoord>& vector, int& index);
+	void debug();
+	
+	std::string mURL;
+	std::string mBuffer;
+	sMainInfo mMainInfo;
 };
 
-
-
-#endif // CCUBDESERIALIZATOR_HPP
+#endif // !CCUBDESERIALIZATOR_HPP

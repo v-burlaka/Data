@@ -1,13 +1,17 @@
 #include "DataEditDialog.hpp"
 #include "ui_DataEditDialog.h"
 #include "gui/CSetBoxSettingDialog.hpp"
-
+#include "fileProcessingCore/api/CCUBDeserializator.hpp"
+#include "fileProcessingCore/api/CCUBSerializator.hpp"
+#include <QDebug>
 DataEditDialog::DataEditDialog(QWidget *parent)
    : QDialog(parent)
    , mParent(parent)
    , ui(new Ui::DataEditDialog())
    , settingEmptyBlocksDialog(new CSetBoxSettingDialog("Empty Bloks Settings" , this))
    , settingTrancalancyBlocksDialog(new CSetBoxSettingDialog("Empty Trancalancy Settings" , this, true))
+   , pDeserealizator(new CCUBDeserializator)
+   , pSerializator(new CCUBSerializator)
 {
    ui->setupUi(this);
 
@@ -18,12 +22,21 @@ DataEditDialog::DataEditDialog(QWidget *parent)
 DataEditDialog::~DataEditDialog()
 {
    delete ui;
+   delete pDeserealizator;
+   delete pSerializator;
 }
 
-void DataEditDialog::setMainInfo(const sMainInfo& MainInfo)
+void DataEditDialog::setMainInfo(const std::string& URL)
 {
-   mMainInfo = MainInfo;
+   pDeserealizator->setURL(URL);
+   mMainInfo = pDeserealizator->execute();
    initEditLinesByDefault();
+}
+
+void DataEditDialog::createFail(const QString& URL)
+{
+   pSerializator->setURL(URL.toUtf8().constData());
+   qDebug(URL.toUtf8().constData());
 }
 
 void DataEditDialog::initMainInfo()
@@ -111,4 +124,9 @@ void DataEditDialog::on_pushButton_SetEmptyBlocks_clicked()
 {
    settingEmptyBlocksDialog->setCountOfCoords(ui->lineEdit_CuntEmptyBlocks->text().toInt());
    settingEmptyBlocksDialog->showForm();
+}
+
+void DataEditDialog::on_Save_clicked()
+{
+pSerializator->execute(mMainInfo);
 }

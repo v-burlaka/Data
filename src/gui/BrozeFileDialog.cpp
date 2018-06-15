@@ -1,7 +1,12 @@
+#include <string>
+
 #include "BrozeFileDialog.hpp"
+#include "DataEditDialog.hpp"
 #include "ui_BrozeFileDialog.h"
+#include <QMessageBox>
 #include <QFileDialog>
 #include "gui/DataEditDialog.hpp"
+#include "fileProcessingCore/api/Helper.hpp"
 
 BrozeFileDialog::BrozeFileDialog(QWidget *parent)
 : QDialog(parent)
@@ -34,6 +39,20 @@ void BrozeFileDialog::on_pushButton_clicked()
 void BrozeFileDialog::on_pushButton_3_clicked()
 {
    this->close();
-//   pDataEditDialog->setMainInfo(); todo edit desirializer here
-   pDataEditDialog->show();
+   try
+   {
+      pDataEditDialog->setMainInfo(std::string(mPathToFile.toUtf8().constData()));
+      pDataEditDialog->show();
+   }
+   catch(std::bad_alloc)
+   {
+      QMessageBox::warning(0,"Warning", "Incorrect path");
+      this->show();
+   }
+   catch(exceptions::InvalidPathOrFile)
+   {
+      //QMessageBox::warning(0,"Warning", QString::fromUtf8(exception.getException().c_str(), exception.getException().length()));
+      QMessageBox::warning(0,"Warning", "Incorrect file");
+      this->show();
+   }
 }

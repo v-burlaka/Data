@@ -1,9 +1,9 @@
-#include "CSerializer.hpp"
+#include "..\api\CSerializer.hpp"
 #include <iostream>
 
 CSerializator::CSerializator() 
-	: mSerializator  (std::make_unique<CCUBSerializator>())
-	, mDeserializator(std::make_unique<CCUBDeserializator>())
+    : mSerializator  (std::make_shared<CCUBSerializator>())
+    , mDeserializator(std::make_shared<CCUBDeserializator>())
 {
 }
 

@@ -6,6 +6,7 @@
 
 namespace Ui { class MainWindow;}
 class BrozeFileDialog;
+class CreateDialog;
 
 class MainWindow : public QMainWindow
 {
@@ -23,6 +24,7 @@ private slots:
 private:
    Ui::MainWindow *ui;
    BrozeFileDialog* pBrozeFileDialog;
+   CreateDialog*    pCreateDialog;
 };
 
 #endif // MAINWINDOW_HPP

@@ -4,6 +4,7 @@
 #include <QDialog>
 
 namespace Ui { class BrozeFileDialog; }
+
 class DataEditDialog;
 
 class BrozeFileDialog : public QDialog
