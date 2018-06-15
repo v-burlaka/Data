@@ -4,6 +4,8 @@
 #include "fileProcessingCore/api/CCUBDeserializator.hpp"
 #include "fileProcessingCore/api/CCUBSerializator.hpp"
 #include <QDebug>
+#include "gui/CSetCoordDialogCtrl.hpp"
+
 DataEditDialog::DataEditDialog(QWidget *parent)
    : QDialog(parent)
    , mParent(parent)
@@ -12,6 +14,9 @@ DataEditDialog::DataEditDialog(QWidget *parent)
    , settingTrancalancyBlocksDialog(new CSetBoxSettingDialog("Empty Trancalancy Settings" , this, true))
    , pDeserealizator(new CCUBDeserializator)
    , pSerializator(new CCUBSerializator)
+   , pSetXCoordDialog(new CSetCoordDialogCtrl(std::string("X"), this))
+   , pSetYCoordDialog(new CSetCoordDialogCtrl(std::string("Y"), this))
+   , pSetZCoordDialog(new CSetCoordDialogCtrl(std::string("Z"), this))
 {
    ui->setupUi(this);
 
@@ -106,7 +111,10 @@ void DataEditDialog::on_pushButton_9_clicked()
 
 void DataEditDialog::on_pushButton_SetCount_CoordBy_X_clicked()
 {
+   pSetXCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_X->text().toInt());
+   this->close();
 
+   pSetXCoordDialog->showForm();
 }
 
 void DataEditDialog::on_pushButton_SetHeatCoefficient_clicked()
@@ -128,5 +136,21 @@ void DataEditDialog::on_pushButton_SetEmptyBlocks_clicked()
 
 void DataEditDialog::on_Save_clicked()
 {
-pSerializator->execute(mMainInfo);
+   pSerializator->execute(mMainInfo);
+}
+
+void DataEditDialog::on_pushButton_SetCount_CoordBy_Y_clicked()
+{
+   pSetYCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_Y->text().toInt());
+   this->close();
+
+   pSetYCoordDialog->showForm();
+}
+
+void DataEditDialog::on_pushButton_SetCount_CoordBy_Z_clicked()
+{
+   pSetZCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_Z->text().toInt());
+   this->close();
+
+   pSetZCoordDialog->showForm();
 }
