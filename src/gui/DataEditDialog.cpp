@@ -1,6 +1,7 @@
 #include "DataEditDialog.hpp"
 #include "ui_DataEditDialog.h"
 #include "gui/CSetBoxSettingDialog.hpp"
+#include "gui/CSetCoordDialogCtrl.hpp"
 
 DataEditDialog::DataEditDialog(QWidget *parent)
    : QDialog(parent)
@@ -8,6 +9,10 @@ DataEditDialog::DataEditDialog(QWidget *parent)
    , ui(new Ui::DataEditDialog())
    , settingEmptyBlocksDialog(new CSetBoxSettingDialog("Empty Bloks Settings" , this))
    , settingTrancalancyBlocksDialog(new CSetBoxSettingDialog("Empty Trancalancy Settings" , this, true))
+   , pSetXCoordDialog(new CSetCoordDialogCtrl(std::string("X"), this))
+   , pSetYCoordDialog(new CSetCoordDialogCtrl(std::string("Y"), this))
+   , pSetZCoordDialog(new CSetCoordDialogCtrl(std::string("Z"), this))
+
 {
    ui->setupUi(this);
 
@@ -93,7 +98,10 @@ void DataEditDialog::on_pushButton_9_clicked()
 
 void DataEditDialog::on_pushButton_SetCount_CoordBy_X_clicked()
 {
+   pSetXCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_X->text().toInt());
+   this->close();
 
+   pSetXCoordDialog->showForm();
 }
 
 void DataEditDialog::on_pushButton_SetHeatCoefficient_clicked()
@@ -111,4 +119,20 @@ void DataEditDialog::on_pushButton_SetEmptyBlocks_clicked()
 {
    settingEmptyBlocksDialog->setCountOfCoords(ui->lineEdit_CuntEmptyBlocks->text().toInt());
    settingEmptyBlocksDialog->showForm();
+}
+
+void DataEditDialog::on_pushButton_SetCount_CoordBy_Y_clicked()
+{
+   pSetYCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_Y->text().toInt());
+   this->close();
+
+   pSetYCoordDialog->showForm();
+}
+
+void DataEditDialog::on_pushButton_SetCount_CoordBy_Z_clicked()
+{
+   pSetZCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_Z->text().toInt());
+   this->close();
+
+   pSetZCoordDialog->showForm();
 }

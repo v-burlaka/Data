@@ -33,9 +33,10 @@ HEADERS += \
     gui/DataEditDialog.hpp \
     gui/MainWindow.hpp \
     gui/Form.hpp \
-    gui/CSetCoordDialog.hpp \
     gui/CTrancalancyBlockDialog.hpp \
-    gui/CSetBoxSettingDialog.hpp
+    gui/CSetBoxSettingDialog.hpp \
+    gui/FormCoordInput.hpp \
+    gui/CSetCoordDialogCtrl.hpp
 
 SOURCES += \
     fileProcessingCore/src/CCUBDeserializator.cpp \
@@ -46,12 +47,14 @@ SOURCES += \
     gui/DataEditDialog.cpp \
     gui/MainWindow.cpp \
     gui/Form.cpp \
-    gui/CSetCoordDialog.cpp \
     gui/CTrancalancyBlockDialog.cpp \
-    gui/CSetBoxSettingDialog.cpp
+    gui/CSetBoxSettingDialog.cpp \
+    gui/FormCoordInput.cpp \
+    gui/CSetCoordDialogCtrl.cpp
 
 FORMS += \
     gui/BrozeFileDialog.ui \
     gui/DataEditDialog.ui \
     gui/MainWindow.ui \
-    gui/Form.ui
+    gui/Form.ui \
+    gui/FormCoordInput.ui
