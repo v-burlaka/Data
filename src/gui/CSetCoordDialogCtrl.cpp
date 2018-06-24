@@ -38,15 +38,15 @@ void CSetCoordDialogCtrl::setCountOfCoord(int countOfCoord)
 {
    int countOfNewItems = mCountOfCoord - countOfCoord;
 
-   qDebug("Was: %d, need %d", mCountOfCoord, countOfCoord);
-
    if(countOfNewItems < 0)
    {
+      qDebug("Was: %d, need %d, count of new coord %d", mCountOfCoord, countOfCoord, countOfNewItems);
       qDebug("NewCoordInputItems %d", countOfNewItems * -1);
       createNewCoordInputItems(countOfNewItems * -1 );
    }
    else
    {
+      qDebug("Was: %d, need %d, count of delete coord %d", mCountOfCoord, countOfCoord, countOfNewItems);
       qDebug("deleteExcessInputItems %d", countOfNewItems);
       deleteExcessInputItems(countOfNewItems);
    }
@@ -132,10 +132,12 @@ void CSetCoordDialogCtrl::createNewCoordInputItems(int countNeedCreateCoordInput
    for(;countNeedCreateCoordInputItems != 0;)
    {
       countNeedCreateCoordInputItems = coordInitTableList.back()->setCountOfCoord(countNeedCreateCoordInputItems);
+
       if(countNeedCreateCoordInputItems != 0)
       {
          qDebug("Create new table, need input %d", countNeedCreateCoordInputItems);
          coordInitTableList.push_back(new CoordInitTable(FormCoordInput, mName.c_str()));
+
          countNeedCreateCoordInputItems = coordInitTableList.back()->setCountOfCoord(countNeedCreateCoordInputItems);
          horizontalLayout_2->addLayout(coordInitTableList.back()->formLayout);
       }
@@ -221,18 +223,11 @@ int CSetCoordDialogCtrl::CoordInitTable::deleteExcessInputItems(int countExcessI
    {
       for(int i = 0; i < difference; ++i )
       {
-         QLabel *deletedLabel = label_coords.back();
-         QLineEdit *deletedLineEdit = lineEdit_coords.back();
+         delete label_coords.back();
+         delete lineEdit_coords.back();
 
          label_coords.pop_back();
          lineEdit_coords.pop_back();
-
-
-         formLayout->removeWidget(deletedLabel);
-         formLayout->removeWidget(deletedLineEdit);
-
-         delete deletedLabel;
-         delete deletedLineEdit;
 
          --index;
       }
