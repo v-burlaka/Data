@@ -29,6 +29,8 @@ private:
    QString mDirectory;
    QString mName;
    DataEditDialog* pDataEditDialog;
+   const QString mNameMask;
+   QWidget* mParent;
 };
 
 #endif // CHOICENAME_HPP

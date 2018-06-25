@@ -15,10 +15,10 @@ private:
 	virtual void baseCoord(const sBaseCoord& info) const override;
 	virtual void emptyBlocks(const std::vector<sBlockCoord> info) const override;
 	virtual void mainTranscalancy(const double& transcalancy) const override;
-	virtual void anotherTranscalancy(const std::vector<sBlockCoord>& info, const std::vector<double>& transcalancy) const override;
+   virtual void anotherTranscalancy(const std::vector<sBoxInfo>& info) const override;
 	virtual void heatCoefficient(const std::vector<double>& coefficients) const override;
 	virtual void holeHeatCoefficient(const std::vector<double>& coefficients) const override;
-	virtual void coordNQ(const std::vector<sBlockCoord>& info, const std::vector<double>& NQ) const override;
+   virtual void coordNQ(const std::vector<sBoxInfo>& info) const override;
 	virtual void flatNp(const int count) const override;
 	virtual void temperature(const double& temp) const override;
 

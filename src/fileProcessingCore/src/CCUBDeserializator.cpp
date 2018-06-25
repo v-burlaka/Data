@@ -89,9 +89,9 @@ void CCUBDeserializator::baseCoord()
 		}
 	}
 
-	mMainInfo.mBaseCoord.coordX.reserve(mMainInfo.mBaseCoord.countX);
-	mMainInfo.mBaseCoord.coordY.reserve(mMainInfo.mBaseCoord.countY);
-	mMainInfo.mBaseCoord.coordZ.reserve(mMainInfo.mBaseCoord.countZ);
+   mMainInfo.mBaseCoord.coordX.reserve(mMainInfo.mBaseCoord.countX + 1);
+   mMainInfo.mBaseCoord.coordY.reserve(mMainInfo.mBaseCoord.countY + 1);
+   mMainInfo.mBaseCoord.coordZ.reserve(mMainInfo.mBaseCoord.countZ + 1);
 
 	str = "X:\n";
 	pos = mBuffer.find(str);
@@ -154,7 +154,7 @@ double CCUBDeserializator::writeNumber(int& index) const
 }
 
 void CCUBDeserializator::debug()
-{
+{/*
 	std::cout << "debug\n";
 	setlocale(0, "");
 	std::cout << "Количество базовых координат:\n";
@@ -249,7 +249,7 @@ void CCUBDeserializator::debug()
 	std::cout << mMainInfo.mCountFlatNp;
 
 	std::cout << "\nТемпература среды:\n";
-	std::cout << mMainInfo.mTemperatureEnvironment;
+   std::cout << mMainInfo.mTemperatureEnvironment;*/
 }
 
 void CCUBDeserializator::toNextString(int& index)
@@ -326,7 +326,28 @@ void CCUBDeserializator::fillEmptyBlocks(std::vector<sBlockCoord>& vector, int& 
 	coord.endCoord.Z   = static_cast<int>(writeNumber(index));
 	++index;
 
-	vector.push_back(coord);
+   vector.push_back(coord);
+}
+
+void CCUBDeserializator::fillEmptyBoxes(std::vector<sBoxInfo>& vector, int &index)
+{
+   sBoxInfo box;
+   box.coord.startCoord.X = static_cast<int>(writeNumber(index));
+   ++index;
+   box.coord.endCoord.X   = static_cast<int>(writeNumber(index));
+   ++index;
+   box.coord.startCoord.Y = static_cast<int>(writeNumber(index));
+   ++index;
+   box.coord.endCoord.Y   = static_cast<int>(writeNumber(index));
+   ++index;
+   box.coord.startCoord.Z = static_cast<int>(writeNumber(index));
+   ++index;
+   box.coord.endCoord.Z   = static_cast<int>(writeNumber(index));
+   ++index;
+
+   box.value = static_cast<int>(writeNumber(index));
+
+   vector.push_back(box);
 }
 
 void CCUBDeserializator::mainTranscalancy()
@@ -366,8 +387,8 @@ void CCUBDeserializator::anotherTranscalancy()
 
 	for (int i = 0; i < mMainInfo.mBlocksInfo.countAnotherTrancalancy; ++pos, ++i)
 	{
-		fillEmptyBlocks(mMainInfo.mBlocksInfo.coordAnotherTrancalancy, pos);
-		mMainInfo.mBlocksInfo.valueAnotherTrancalancy.push_back(writeNumber(pos));
+      fillEmptyBoxes(mMainInfo.mBlocksInfo.AnotherTrancalancyBoxes, pos);
+      //mMainInfo.mBlocksInfo.valueAnotherTrancalancy.push_back(writeNumber(pos));
 		toNextString(pos);
 		toNextString(pos);
 	}
@@ -428,10 +449,10 @@ void CCUBDeserializator::coordNQ()
 	toNextString(pos);
 	++pos;
 
-	for (int i = 0; i < mMainInfo.mBlocksInfo.countAnotherTrancalancy; ++pos, ++i)
+   for (int i = 0; i < mMainInfo.mBlocksInfo.countNQ; ++pos, ++i)
 	{
-		fillEmptyBlocks(mMainInfo.mBlocksInfo.coordNQ, pos);
-		mMainInfo.mBlocksInfo.valueNQ.push_back(writeNumber(pos));
+      fillEmptyBoxes(mMainInfo.mBlocksInfo.NQBoxes, pos);
+      //mMainInfo.mBlocksInfo.valueNQ.push_back(writeNumber(pos));
 		toNextString(pos);
 		toNextString(pos);
 	}

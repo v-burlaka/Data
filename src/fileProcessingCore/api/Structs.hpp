@@ -16,18 +16,22 @@ struct sBlockCoord
 	sXYZ endCoord;
 };
 
+struct sBoxInfo
+{
+   sBoxInfo() {}
+   sBlockCoord coord;
+   double value;
+};
 struct sBlocksInfo
 {
-	int countEmptyBlocks;
-	std::vector<sBlockCoord> coordEmptyBlocks;
+   int countEmptyBlocks;
+   std::vector<sBlockCoord> coordEmptyBlocks;
 
-	int countAnotherTrancalancy;
-	std::vector<double> valueAnotherTrancalancy;
-	std::vector<sBlockCoord> coordAnotherTrancalancy;
+   int countAnotherTrancalancy;
+   std::vector<sBoxInfo> AnotherTrancalancyBoxes;
 
-	int countNQ;
-	std::vector<double> valueNQ;
-	std::vector<sBlockCoord> coordNQ;
+   int countNQ;
+   std::vector<sBoxInfo> NQBoxes;
 };
 
 struct sBaseCoord

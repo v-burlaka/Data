@@ -21,7 +21,7 @@ DataEditDialog::DataEditDialog(QWidget *parent)
    ui->setupUi(this);
 
    initMainInfo();
-   initEditLinesByDefault();
+   //initEditLinesByDefault();
 }
 
 DataEditDialog::~DataEditDialog()
@@ -70,13 +70,13 @@ void DataEditDialog::initMainInfo()
    mMainInfo.mBlocksInfo.countAnotherTrancalancy = 2;
    mMainInfo.mBlocksInfo.countNQ = 2;
 
-   for (int i = 0; i < 2; ++i)
-   {
-      mMainInfo.mBlocksInfo.coordEmptyBlocks.push_back(coord);
-      mMainInfo.mBlocksInfo.coordAnotherTrancalancy.push_back(coord);
-      mMainInfo.mBlocksInfo.coordNQ.push_back(coord);
-      mMainInfo.mBlocksInfo.valueNQ.push_back(221.5);
-   }
+//   for (int i = 0; i < 2; ++i)
+//   {
+//      mMainInfo.mBlocksInfo.coordEmptyBlocks.push_back(coord);
+//      mMainInfo.mBlocksInfo.coordAnotherTrancalancy.push_back(coord);
+//      mMainInfo.mBlocksInfo.coordNQ.push_back(coord);
+//      mMainInfo.mBlocksInfo.valueNQ.push_back(221.5);
+//   }
 
    mMainInfo.mMainTranscalancy = 3.5;
 
@@ -106,7 +106,6 @@ void DataEditDialog::initEditLinesByDefault()
 void DataEditDialog::on_pushButton_9_clicked()
 {
    this->close();
-   mParent->show();
 }
 
 void DataEditDialog::on_pushButton_SetCount_CoordBy_X_clicked()
@@ -137,6 +136,11 @@ void DataEditDialog::on_pushButton_SetEmptyBlocks_clicked()
 void DataEditDialog::on_Save_clicked()
 {
    pSerializator->execute(mMainInfo);
+   this->close();
+   if(0 != mParent)
+   {
+      mParent->show();
+   }
 }
 
 void DataEditDialog::on_pushButton_SetCount_CoordBy_Y_clicked()
@@ -153,4 +157,13 @@ void DataEditDialog::on_pushButton_SetCount_CoordBy_Z_clicked()
    this->close();
 
    pSetZCoordDialog->showForm();
+}
+
+void DataEditDialog::on_Back_clicked()
+{
+   this->close();
+   if(0 != mParent)
+   {
+      mParent->show();
+   }
 }

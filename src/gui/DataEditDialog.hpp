@@ -41,6 +41,8 @@ private slots:
    void on_pushButton_SetCount_CoordBy_Z_clicked();
 
 
+   void on_Back_clicked();
+
 private:
    void initMainInfo();
    void initEditLinesByDefault();
