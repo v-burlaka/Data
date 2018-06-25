@@ -32,13 +32,13 @@ HEADERS += \
     gui/BrozeFileDialog.hpp \
     gui/DataEditDialog.hpp \
     gui/MainWindow.hpp \
-    gui/Form.hpp \
     gui/CTrancalancyBlockDialog.hpp \
     gui/CSetBoxSettingDialog.hpp \
-    gui/FormCoordInput.hpp \
     gui/CSetCoordDialogCtrl.hpp \
+    gui/CSetNQBox.hpp \
     CreateDialog.hpp \
-    fileProcessingCore/api/ChoiceName.hpp
+    fileProcessingCore/api/ChoiceName.hpp \
+    gui/HeatCoefficientDialog.hpp
 
 SOURCES += \
     fileProcessingCore/src/CCUBDeserializator.cpp \
@@ -48,19 +48,18 @@ SOURCES += \
     gui/BrozeFileDialog.cpp \
     gui/DataEditDialog.cpp \
     gui/MainWindow.cpp \
-    gui/Form.cpp \
     gui/CTrancalancyBlockDialog.cpp \
     gui/CSetBoxSettingDialog.cpp \
-    gui/FormCoordInput.cpp \
     gui/CSetCoordDialogCtrl.cpp \
+    gui/CSetNQBox.cpp \
     CreateDialog.cpp \
-    fileProcessingCore/api/ChoiceName.cpp
+    fileProcessingCore/api/ChoiceName.cpp \
+    gui/HeatCoefficientDialog.cpp
 
 FORMS += \
     gui/BrozeFileDialog.ui \
     gui/DataEditDialog.ui \
     gui/MainWindow.ui \
-    gui/Form.ui \
-    gui/FormCoordInput.ui \
     CreateDialog.ui \
-    fileProcessingCore/api/ChoiceName.ui
+    fileProcessingCore/api/ChoiceName.ui \
+    gui/HeatCoefficientDialog.ui

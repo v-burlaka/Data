@@ -62,13 +62,14 @@ private:
    private:
       void createWidgets();
       void intNewiEditLineAndLabel(const int countNew);
+      void deleteEditLineAndLabel(const int countOfDeletedElements);
 
    private:
       std::vector<QLabel *> label_coords;
       std::vector<QLineEdit *> lineEdit_coords;
       QString mName;
       QWidget* FormCoordInput;
-      int mCountOfCoord;
+      int mCountOfElements;
       const int MAX_SIZE;
       int index;
    };

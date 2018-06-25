@@ -1,5 +1,5 @@
-#ifndef CFORMSCREATOR_HPP
-#define CFORMSCREATOR_HPP
+#ifndef C_SET_NQ_BOX_HPP
+#define C_SET_NQ_BOX_HPP
 
 #include <QDialog>
 #include <string>
@@ -19,13 +19,13 @@
 #include <QtWidgets/QWidget>
 #include <vector>
 
-class CSetBoxSettingDialog : public QDialog
+class CSetNQBox : public QDialog
 {
    Q_OBJECT
 
 public:
-   CSetBoxSettingDialog(const std::string& name, QWidget *parent = 0, bool isNeedTrancalancy = false);
-   ~CSetBoxSettingDialog();
+   explicit CSetNQBox(const std::string& name, QWidget *parent = 0, bool isNeedTrancalancy = false);
+   ~CSetNQBox();
 
    void setCountOfCoords(int countOfCoords);
    void showForm();
@@ -97,4 +97,4 @@ private:
    bool mIsNeedTrancalancy;
 };
 
-#endif // CFORMSCREATOR_HPP
+#endif // C_SET_NQ_BOX_HPP

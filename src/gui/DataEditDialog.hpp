@@ -6,10 +6,11 @@
 
 namespace Ui { class DataEditDialog; }
 class CSetCoordDialogCtrl;
-class CSetBoxSettingDialog;
 class CCUBDeserializator;
 class CCUBSerializator;
-
+class CSetBoxSettingDialog;
+class CSetNQBox;
+class HeatCoefficientDialog;
 
 class DataEditDialog : public QDialog
 {
@@ -33,13 +34,15 @@ private slots:
 
    void on_pushButton_SetEmptyBlocks_clicked();
 
-
    void on_Save_clicked();
 
    void on_pushButton_SetCount_CoordBy_Y_clicked();
 
    void on_pushButton_SetCount_CoordBy_Z_clicked();
 
+   void on_pushButton_SetCountNQ_clicked();
+
+   void on_pushButton_SetHoleHeatCollection_clicked();
 
 private:
    void initMainInfo();
@@ -48,11 +51,18 @@ private:
 private:
    Ui::DataEditDialog *ui;
    QWidget* mParent;
+
    CSetCoordDialogCtrl* pSetXCoordDialog;
    CSetCoordDialogCtrl* pSetYCoordDialog;
    CSetCoordDialogCtrl* pSetZCoordDialog;
+
    CSetBoxSettingDialog* settingEmptyBlocksDialog;
    CSetBoxSettingDialog* settingTrancalancyBlocksDialog;
+
+   CSetNQBox* settingNQBlocksDialog;
+   HeatCoefficientDialog* settingHeatCoefficientDialog;
+   HeatCoefficientDialog* settingHoleHeatCollection;
+
    sMainInfo mMainInfo;
    CCUBDeserializator* pDeserealizator;
    CCUBSerializator* pSerializator;

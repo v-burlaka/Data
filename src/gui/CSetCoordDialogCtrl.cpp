@@ -129,7 +129,7 @@ void CSetCoordDialogCtrl::createWidgets()
 
 void CSetCoordDialogCtrl::createNewCoordInputItems(int countNeedCreateCoordInputItems)
 {
-   for(;countNeedCreateCoordInputItems != 0;)
+   while(countNeedCreateCoordInputItems > 0)
    {
       countNeedCreateCoordInputItems = coordInitTableList.back()->setCountOfCoord(countNeedCreateCoordInputItems);
 
@@ -162,7 +162,7 @@ void CSetCoordDialogCtrl::deleteExcessInputItems(int countExcessInputItems)
 CSetCoordDialogCtrl::CoordInitTable::CoordInitTable(QWidget* parent, const QString& name)
    : mName(name)
    , FormCoordInput(parent)
-   , mCountOfCoord(0)
+   , mCountOfElements(0)
    , MAX_SIZE(12)
    , index(0)
 {
@@ -186,52 +186,61 @@ CSetCoordDialogCtrl::CoordInitTable::~CoordInitTable()
 
 int CSetCoordDialogCtrl::CoordInitTable::setCountOfCoord(int countOfCoord)
 {
-   int residue = MAX_SIZE - countOfCoord;
+   int difference = 0;
+   int countOfCanAddEditLine = MAX_SIZE - mCountOfElements;
 
-   qDebug("Table, need input %d, was %d", countOfCoord, mCountOfCoord);
+   qDebug("Table, need input %d, was %d", countOfCoord, mCountOfElements);
 
-   if(residue < 0)
+   if (countOfCanAddEditLine == 0)
    {
-      qDebug("Table, need input %d", MAX_SIZE - mCountOfCoord);
-      intNewiEditLineAndLabel(MAX_SIZE - mCountOfCoord);
-
-      mCountOfCoord = MAX_SIZE;
-      residue = residue * -1;
+      qDebug("Table, can`t add new elements");
+      difference = countOfCoord;
    }
    else
    {
-      intNewiEditLineAndLabel(countOfCoord);
-
-      mCountOfCoord += countOfCoord;
-      residue = 0;
+      if(countOfCanAddEditLine > countOfCoord)
+      {
+         difference = 0;
+         qDebug("Table, add %d elements", countOfCoord);
+         intNewiEditLineAndLabel(countOfCoord);
+      }
+      else
+      {
+         difference = countOfCoord - countOfCanAddEditLine;
+         qDebug("Table, add %d elements", countOfCanAddEditLine);
+         intNewiEditLineAndLabel(countOfCanAddEditLine);
+      }
    }
 
-   return residue;
+   return difference;
 }
 
 int CSetCoordDialogCtrl::CoordInitTable::deleteExcessInputItems(int countExcessInputItems)
 {
-   int difference = mCountOfCoord - countExcessInputItems;
+   int difference = mCountOfElements - countExcessInputItems;
 
-   qDebug("Table, need delete %d, was %d", countExcessInputItems, mCountOfCoord);
+   qDebug("Table, need delete %d, was %d", countExcessInputItems, mCountOfElements);
 
-   if(difference < 0)
+   if(mCountOfElements == 0)
    {
-      difference = difference * -1;
+      qDebug("Table, can`t delete elements");
+      difference = 0;
    }
    else
    {
-      for(int i = 0; i < difference; ++i )
+      if(mCountOfElements > countExcessInputItems)
       {
-         delete label_coords.back();
-         delete lineEdit_coords.back();
-
-         label_coords.pop_back();
-         lineEdit_coords.pop_back();
-
-         --index;
+         difference = 0;
+         qDebug("Table, delete %d elements", countExcessInputItems);
+         deleteEditLineAndLabel(countExcessInputItems);
       }
-      qDebug("Table, delete success");
+      else
+      {
+         difference = countExcessInputItems - mCountOfElements;
+         qDebug("Table, delete %d elements", mCountOfElements);
+         deleteEditLineAndLabel(mCountOfElements);
+      }
+
       difference = 0;
    }
 
@@ -243,11 +252,13 @@ void CSetCoordDialogCtrl::CoordInitTable::createWidgets()
    formLayout = new QFormLayout();
    formLayout->setObjectName(QStringLiteral("formLayout"));
 
-   intNewiEditLineAndLabel(mCountOfCoord);
+   intNewiEditLineAndLabel(mCountOfElements);
 }
 
 void CSetCoordDialogCtrl::CoordInitTable::intNewiEditLineAndLabel(const int countNew)
 {
+   mCountOfElements += countNew;
+
    for(int i = 0; i < countNew; ++i)
    {
       index++;
@@ -268,7 +279,7 @@ void CSetCoordDialogCtrl::CoordInitTable::intNewiEditLineAndLabel(const int coun
       qDebug("newLineEdit created");
 
       formLayout->setWidget(index - 1, QFormLayout::LabelRole, newLabel);
-      qDebug("newLineEdit set to formLayout");
+      qDebug("newLabel set to formLayout");
 
       formLayout->setWidget(index - 1, QFormLayout::FieldRole, newLineEdit);
       qDebug("newLineEdit set to formLayout");
@@ -277,3 +288,22 @@ void CSetCoordDialogCtrl::CoordInitTable::intNewiEditLineAndLabel(const int coun
       lineEdit_coords.push_back(newLineEdit);
    }
 }
+
+void CSetCoordDialogCtrl::CoordInitTable::deleteEditLineAndLabel(const int countOfDeletedElements)
+{
+   mCountOfElements -= countOfDeletedElements;
+
+   for(int i = 0; i < countOfDeletedElements; ++i )
+   {
+      delete label_coords.back();
+      delete lineEdit_coords.back();
+
+      label_coords.pop_back();
+      lineEdit_coords.pop_back();
+
+      --index;
+   }
+
+   qDebug("Table, delete success");
+}
+

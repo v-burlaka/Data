@@ -1,10 +1,13 @@
 #include "DataEditDialog.hpp"
 #include "ui_DataEditDialog.h"
-#include "gui/CSetBoxSettingDialog.hpp"
-#include "fileProcessingCore/api/CCUBDeserializator.hpp"
-#include "fileProcessingCore/api/CCUBSerializator.hpp"
-#include <QDebug>
+#include "gui/CSetNQBox.hpp"
 #include "gui/CSetCoordDialogCtrl.hpp"
+#include "gui/CSetBoxSettingDialog.hpp"
+#include "gui/HeatCoefficientDialog.hpp"
+#include "fileProcessingCore/api/CCUBSerializator.hpp"
+#include "fileProcessingCore/api/CCUBDeserializator.hpp"
+#include <QDebug>
+
 
 DataEditDialog::DataEditDialog(QWidget *parent)
    : QDialog(parent)
@@ -12,11 +15,14 @@ DataEditDialog::DataEditDialog(QWidget *parent)
    , ui(new Ui::DataEditDialog())
    , settingEmptyBlocksDialog(new CSetBoxSettingDialog("Empty Bloks Settings" , this))
    , settingTrancalancyBlocksDialog(new CSetBoxSettingDialog("Empty Trancalancy Settings" , this, true))
+   , settingNQBlocksDialog(new CSetNQBox("NQ setting block" , this, true))
    , pDeserealizator(new CCUBDeserializator)
    , pSerializator(new CCUBSerializator)
    , pSetXCoordDialog(new CSetCoordDialogCtrl(std::string("X"), this))
    , pSetYCoordDialog(new CSetCoordDialogCtrl(std::string("Y"), this))
    , pSetZCoordDialog(new CSetCoordDialogCtrl(std::string("Z"), this))
+   , settingHeatCoefficientDialog(new HeatCoefficientDialog(this, "Коэффициенты теплоотдачи"))
+   , settingHoleHeatCollection(new HeatCoefficientDialog(this, "Коэффициенты теплоотдачи с поверхности выемок:"))
 {
    ui->setupUi(this);
 
@@ -111,15 +117,38 @@ void DataEditDialog::on_pushButton_9_clicked()
 
 void DataEditDialog::on_pushButton_SetCount_CoordBy_X_clicked()
 {
-   pSetXCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_X->text().toInt());
+   pSetXCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_X->text().toInt() + 1);
    this->close();
 
    pSetXCoordDialog->showForm();
 }
 
+void DataEditDialog::on_pushButton_SetCount_CoordBy_Y_clicked()
+{
+   pSetYCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_Y->text().toInt() + 1);
+   this->close();
+
+   pSetYCoordDialog->showForm();
+}
+
+void DataEditDialog::on_pushButton_SetCount_CoordBy_Z_clicked()
+{
+   pSetZCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_Z->text().toInt() + 1);
+   this->close();
+
+   pSetZCoordDialog->showForm();
+}
+
 void DataEditDialog::on_pushButton_SetHeatCoefficient_clicked()
 {
+   this->close();
+   settingHeatCoefficientDialog->show();
+}
 
+void DataEditDialog::on_pushButton_SetHoleHeatCollection_clicked()
+{
+   this->close();
+   settingHoleHeatCollection->show();
 }
 
 void DataEditDialog::on_pushButton_SetcountAnotherTrancalancy_clicked()
@@ -134,23 +163,15 @@ void DataEditDialog::on_pushButton_SetEmptyBlocks_clicked()
    settingEmptyBlocksDialog->showForm();
 }
 
+void DataEditDialog::on_pushButton_SetCountNQ_clicked()
+{
+   settingNQBlocksDialog->setCountOfCoords(ui->lineEdit_countNQ->text().toInt());
+   settingNQBlocksDialog->showForm();
+}
+
 void DataEditDialog::on_Save_clicked()
 {
    pSerializator->execute(mMainInfo);
 }
 
-void DataEditDialog::on_pushButton_SetCount_CoordBy_Y_clicked()
-{
-   pSetYCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_Y->text().toInt());
-   this->close();
 
-   pSetYCoordDialog->showForm();
-}
-
-void DataEditDialog::on_pushButton_SetCount_CoordBy_Z_clicked()
-{
-   pSetZCoordDialog->setCountOfCoord(ui->lineEdit_Count_CoordBy_Z->text().toInt());
-   this->close();
-
-   pSetZCoordDialog->showForm();
-}
