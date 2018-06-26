@@ -62,6 +62,28 @@ void CSetNQBox::showForm()
    Form->show();
 }
 
+void CSetNQBox::initBloks(std::vector<sBoxInfo>& bloks)
+{
+   bloks.clear();
+
+   for(auto table : inputDialogs)
+   {
+      sBoxInfo boxInfo;
+
+      boxInfo.coord.startCoord.X = table->lineEdit_x1->text().toInt();
+      boxInfo.coord.startCoord.Y = table->lineEdit_y1->text().toInt();
+      boxInfo.coord.startCoord.Z = table->lineEdit_z1->text().toInt();
+
+      boxInfo.coord.endCoord.X = table->lineEdit_x2->text().toInt();
+      boxInfo.coord.endCoord.Y = table->lineEdit_y2->text().toInt();
+      boxInfo.coord.endCoord.Z = table->lineEdit_z2->text().toInt();
+
+      boxInfo.value = table->lineEdit_Trancalancy->text().toDouble();
+
+      bloks.push_back(boxInfo);
+   }
+}
+
 void CSetNQBox::on_pushButton_close_clicked()
 {
    Form->close();
@@ -150,12 +172,12 @@ CSetNQBox::InputDialog::~InputDialog()
    delete label_z1;
    delete label_y2;
    delete label_y1;
-   delete lineEdit;
-   delete lineEdit_3;
-   delete lineEdit_4;
-   delete lineEdit_2;
-   delete lineEdit_6;
-   delete lineEdit_5;
+   delete lineEdit_x1;
+   delete lineEdit_z1;
+   delete lineEdit_z2;
+   delete lineEdit_x2;
+   delete lineEdit_y1;
+   delete lineEdit_y2;
 }
 
 void CSetNQBox::InputDialog::setName(const std::string& name)
@@ -182,30 +204,30 @@ void CSetNQBox::InputDialog::createWidgets()
 
 void CSetNQBox::InputDialog::addLineEditForms()
 {
-   lineEdit = new QLineEdit(Form);
-   lineEdit->setObjectName(QStringLiteral("lineEdit"));
+   lineEdit_x1 = new QLineEdit(Form);
+   lineEdit_x1->setObjectName(QStringLiteral("lineEdit"));
 
-   lineEdit_4 = new QLineEdit(Form);
-   lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+   lineEdit_z2 = new QLineEdit(Form);
+   lineEdit_z2->setObjectName(QStringLiteral("lineEdit_4"));
 
-   lineEdit_2 = new QLineEdit(Form);
-   lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+   lineEdit_x2 = new QLineEdit(Form);
+   lineEdit_x2->setObjectName(QStringLiteral("lineEdit_2"));
 
-   lineEdit_6 = new QLineEdit(Form);
-   lineEdit_6->setObjectName(QStringLiteral("lineEdit_6"));
+   lineEdit_y1 = new QLineEdit(Form);
+   lineEdit_y1->setObjectName(QStringLiteral("lineEdit_6"));
 
-   lineEdit_5 = new QLineEdit(Form);
-   lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
+   lineEdit_y2 = new QLineEdit(Form);
+   lineEdit_y2->setObjectName(QStringLiteral("lineEdit_5"));
 
-   lineEdit_3 = new QLineEdit(Form);
-   lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+   lineEdit_z1 = new QLineEdit(Form);
+   lineEdit_z1->setObjectName(QStringLiteral("lineEdit_3"));
 
-   gridLayout->addWidget(lineEdit, 0, 1, 1, 1);
-   gridLayout->addWidget(lineEdit_2, 1, 1, 1, 1);
-   gridLayout->addWidget(lineEdit_6, 0, 3, 1, 1);
-   gridLayout->addWidget(lineEdit_5, 1, 3, 1, 1);
-   gridLayout->addWidget(lineEdit_4, 1, 5, 1, 1);
-   gridLayout->addWidget(lineEdit_3, 0, 5, 1, 1);
+   gridLayout->addWidget(lineEdit_x1, 0, 1, 1, 1);
+   gridLayout->addWidget(lineEdit_x2, 1, 1, 1, 1);
+   gridLayout->addWidget(lineEdit_y1, 0, 3, 1, 1);
+   gridLayout->addWidget(lineEdit_y2, 1, 3, 1, 1);
+   gridLayout->addWidget(lineEdit_z2, 1, 5, 1, 1);
+   gridLayout->addWidget(lineEdit_z1, 0, 5, 1, 1);
 
    if(true == mIsNeedTrancalancy)
    {

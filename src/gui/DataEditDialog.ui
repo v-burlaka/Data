@@ -813,7 +813,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_8">
+      <widget class="QPushButton" name="Back">
        <property name="text">
         <string>Назад</string>
        </property>

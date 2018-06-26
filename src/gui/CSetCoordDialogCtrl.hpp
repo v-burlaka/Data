@@ -27,6 +27,7 @@ public:
 
    void showForm();
    void setCountOfCoord(int countOfCoord);
+   void initCoord(std::vector<double>& coordList);
 
 private slots:
    void on_pushButton_close_clicked();
@@ -58,6 +59,12 @@ private:
       int deleteExcessInputItems(int countExcessInputItems);
 
       QFormLayout *formLayout;
+
+
+   public:
+      int countOfElements() const;
+
+      const std::vector<QLineEdit*>& getLineEdit_coords() const;
 
    private:
       void createWidgets();

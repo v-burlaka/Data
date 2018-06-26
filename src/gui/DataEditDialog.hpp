@@ -44,9 +44,12 @@ private slots:
 
    void on_pushButton_SetHoleHeatCollection_clicked();
 
+   void on_Back_clicked();
+
 private:
    void initMainInfo();
    void initEditLinesByDefault();
+   void initMainInfoForSave();
 
 private:
    Ui::DataEditDialog *ui;

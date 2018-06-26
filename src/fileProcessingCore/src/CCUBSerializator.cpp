@@ -22,10 +22,10 @@ void CCUBSerializator::execute(const sMainInfo & info) const
 	baseCoord(info.mBaseCoord);
 	emptyBlocks(info.mBlocksInfo.coordEmptyBlocks);
 	mainTranscalancy(info.mMainTranscalancy);
-	anotherTranscalancy(info.mBlocksInfo.coordAnotherTrancalancy, info.mBlocksInfo.valueAnotherTrancalancy);
+   anotherTranscalancy(info.mBlocksInfo.AnotherTrancalancyBoxes);
 	heatCoefficient(info.mHeatCoefficient);
 	holeHeatCoefficient(info.mHoleHeatCollection);
-	coordNQ(info.mBlocksInfo.coordNQ, info.mBlocksInfo.valueNQ);
+   coordNQ(info.mBlocksInfo.NQBoxes);
 	flatNp(info.mCountFlatNp);
 	temperature(info.mTemperatureEnvironment);
 }
@@ -102,7 +102,7 @@ void CCUBSerializator::mainTranscalancy(const double & transcalancy) const
 	file.close();
 }
 
-void CCUBSerializator::anotherTranscalancy(const std::vector<sBlockCoord>& info, const std::vector<double>& transcalancy) const
+void CCUBSerializator::anotherTranscalancy(const std::vector<sBoxInfo>& info) const
 {
 	std::ofstream file(mURL, std::ios_base::app);
 
@@ -117,10 +117,10 @@ void CCUBSerializator::anotherTranscalancy(const std::vector<sBlockCoord>& info,
 		for (int i = 0; i < info.size(); ++i)
 		{
          file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n";
-			file << " " << info[i].startCoord.X << " " << info[i].endCoord.X << " "
-				<< info[i].startCoord.Y << " " << info[i].endCoord.Y << " "
-				<< info[i].startCoord.Z << " " << info[i].endCoord.Z << " "
-				<< transcalancy[i] << "\n";
+         file << " " << info[i].coord.startCoord.X << " " << info[i].coord.endCoord.X << " "
+            << info[i].coord.startCoord.Y << " " << info[i].coord.endCoord.Y << " "
+            << info[i].coord.startCoord.Z << " " << info[i].coord.endCoord.Z << " "
+            << info[i].value << "\n";
 		}
 	}
 
@@ -163,7 +163,7 @@ void CCUBSerializator::holeHeatCoefficient(const std::vector<double>& coefficien
 	file.close();
 }
 
-void CCUBSerializator::coordNQ(const std::vector<sBlockCoord>& info, const std::vector<double>& NQ) const
+void CCUBSerializator::coordNQ(const std::vector<sBoxInfo> &info) const
 {
 	std::ofstream file(mURL, std::ios_base::app);
 
@@ -178,10 +178,10 @@ void CCUBSerializator::coordNQ(const std::vector<sBlockCoord>& info, const std::
       for (int i = 0; i < info.size(); ++i)
 		{
 			file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n";
-			file << " " << info[i].startCoord.X << " " << info[i].endCoord.X << " "
-				<< info[i].startCoord.Y << " " << info[i].endCoord.Y << " "
-				<< info[i].startCoord.Z << " " << info[i].endCoord.Z << " "
-				<< NQ[i] << "\n";
+         file << " " << info[i].coord.startCoord.X << " " << info[i].coord.endCoord.X << " "
+            << info[i].coord.startCoord.Y << " " << info[i].coord.endCoord.Y << " "
+            << info[i].coord.startCoord.Z << " " << info[i].coord.endCoord.Z << " "
+            << info[i].value << "\n";
 		}
 	}
 

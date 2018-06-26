@@ -60,7 +60,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="view_path">
           <property name="text">
            <string>Обзор</string>
           </property>

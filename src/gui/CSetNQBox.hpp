@@ -18,6 +18,7 @@
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include <vector>
+#include "fileProcessingCore/api/Structs.hpp"
 
 class CSetNQBox : public QDialog
 {
@@ -29,6 +30,7 @@ public:
 
    void setCountOfCoords(int countOfCoords);
    void showForm();
+   void initBloks(std::vector<sBoxInfo>& bloks);
 
    private slots:
    void on_pushButton_close_clicked();
@@ -74,14 +76,15 @@ private:
       QLabel      *label_z1;
       QLabel      *label_y2;
       QLabel      *label_y1;
-      QLineEdit   *lineEdit;
-      QLineEdit   *lineEdit_3;
-      QLineEdit   *lineEdit_4;
-      QLineEdit   *lineEdit_2;
-      QLineEdit   *lineEdit_6;
-      QLineEdit   *lineEdit_5;
-
       QLabel      *label_Trancalancy;
+
+   public:
+      QLineEdit   *lineEdit_x1;
+      QLineEdit   *lineEdit_z1;
+      QLineEdit   *lineEdit_z2;
+      QLineEdit   *lineEdit_x2;
+      QLineEdit   *lineEdit_y1;
+      QLineEdit   *lineEdit_y2;
       QLineEdit   *lineEdit_Trancalancy;
 
       bool mIsNeedTrancalancy;

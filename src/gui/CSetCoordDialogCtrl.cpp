@@ -54,6 +54,19 @@ void CSetCoordDialogCtrl::setCountOfCoord(int countOfCoord)
    mCountOfCoord = countOfCoord;
 }
 
+void CSetCoordDialogCtrl::initCoord(std::vector<double>& coordList)
+{
+   coordList.clear();
+
+   for(auto table : coordInitTableList)
+   {
+      for(auto coord : table->getLineEdit_coords())
+      {
+         coordList.push_back(coord->text().toDouble());
+      }
+   }
+}
+
 void CSetCoordDialogCtrl::on_pushButton_close_clicked()
 {
    FormCoordInput->close();
@@ -305,5 +318,15 @@ void CSetCoordDialogCtrl::CoordInitTable::deleteEditLineAndLabel(const int count
    }
 
    qDebug("Table, delete success");
+}
+
+const std::vector<QLineEdit*>& CSetCoordDialogCtrl::CoordInitTable::getLineEdit_coords() const
+{
+   return lineEdit_coords;
+}
+
+int CSetCoordDialogCtrl::CoordInitTable::countOfElements() const
+{
+   return mCountOfElements;
 }
 

@@ -30,12 +30,6 @@ void BrozeFileDialog::on_pushButton_2_clicked()
    mParent->show();
 }
 
-void BrozeFileDialog::on_pushButton_clicked()
-{
-   mPathToFile = QFileDialog::getOpenFileName(this, tr("Open file"), ui->lineEdit_pathToFile->text(), "Data (*.CUB)" );
-   ui->lineEdit_pathToFile->setText(mPathToFile);
-}
-
 void BrozeFileDialog::on_pushButton_3_clicked()
 {
    this->close();
@@ -55,4 +49,11 @@ void BrozeFileDialog::on_pushButton_3_clicked()
       QMessageBox::warning(0,"Warning", "Incorrect file");
       this->show();
    }
+}
+
+void BrozeFileDialog::on_view_path_clicked()
+{
+   qDebug("on_pushButton_clicked");
+   mPathToFile = QFileDialog::getOpenFileName(this, tr("Open file"), ui->lineEdit_pathToFile->text(), "Data (*.CUB)" );
+   ui->lineEdit_pathToFile->setText(mPathToFile);
 }

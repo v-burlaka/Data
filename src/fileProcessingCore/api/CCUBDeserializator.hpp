@@ -29,6 +29,7 @@ private:
 	void toNextString(int& index);
 	void toNextDigit(int& index);
 	void fillEmptyBlocks(std::vector<sBlockCoord>& vector, int& index);
+   void fillEmptyBoxes(std::vector<sBoxInfo> &vector, int& index);
 	void debug();
 	
 	std::string mURL;
