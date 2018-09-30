@@ -18,9 +18,9 @@ public:
 private slots:
    void on_pushButton_2_clicked();
 
-   void on_pushButton_3_clicked();
-
    void on_view_path_clicked();
+
+   void on_OpenFile_clicked();
 
 private:
    Ui::BrozeFileDialog *ui;

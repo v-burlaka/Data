@@ -68,6 +68,7 @@ DataEditDialog::~DataEditDialog()
 void DataEditDialog::setMainInfo(const std::string& URL)
 {
    pDeserealizator->setURL(URL);
+   pSerializator->setURL(URL);
    mMainInfo = pDeserealizator->execute();
    initEditLinesByDefault();
 }
@@ -204,10 +205,10 @@ void DataEditDialog::on_Save_clicked()
 
    pSerializator->execute(mMainInfo);
    this->close();
-   if(0 != mParent)
+   /*if(0 != mParent)
    {
       mParent->show();
-   }
+   }*/
 }
 
 void DataEditDialog::on_Back_clicked()

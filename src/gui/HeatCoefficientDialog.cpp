@@ -15,8 +15,10 @@ HeatCoefficientDialog::~HeatCoefficientDialog()
    delete ui;
 }
 
-void HeatCoefficientDialog::initCoefficient(std::vector<double> coefficients)
+void HeatCoefficientDialog::initCoefficient(std::vector<double>& coefficients)
 {
+   coefficients.clear();
+
    coefficients.push_back(ui->lineEdit_1_HeatCoefficient->text().toDouble());
    coefficients.push_back(ui->lineEdit_2_HeatCoefficient->text().toDouble());
    coefficients.push_back(ui->lineEdit_3_HeatCoefficient->text().toDouble());

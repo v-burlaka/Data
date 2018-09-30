@@ -1,6 +1,7 @@
 #include <fstream>
+#include <iostream>
 
-#include "..\api\CCUBSerializator.hpp"
+#include "../api/CCUBSerializator.hpp"
 
 CCUBSerializator::CCUBSerializator()
 {
@@ -13,19 +14,19 @@ CCUBSerializator::~CCUBSerializator()
 void CCUBSerializator::setURL(const std::string & URL)
 {
 	mURL = URL;
-	std::ofstream file(mURL);
-	file.clear();
 }
 
 void CCUBSerializator::execute(const sMainInfo & info) const
 {
+	std::ofstream file(mURL);
+	file.clear();
 	baseCoord(info.mBaseCoord);
 	emptyBlocks(info.mBlocksInfo.coordEmptyBlocks);
 	mainTranscalancy(info.mMainTranscalancy);
-   anotherTranscalancy(info.mBlocksInfo.AnotherTrancalancyBoxes);
+	anotherTranscalancy(info.mBlocksInfo.AnotherTrancalancyBoxes);
 	heatCoefficient(info.mHeatCoefficient);
 	holeHeatCoefficient(info.mHoleHeatCollection);
-   coordNQ(info.mBlocksInfo.NQBoxes);
+	coordNQ(info.mBlocksInfo.NQBoxes);
 	flatNp(info.mCountFlatNp);
 	temperature(info.mTemperatureEnvironment);
 }
@@ -33,32 +34,32 @@ void CCUBSerializator::execute(const sMainInfo & info) const
 void CCUBSerializator::baseCoord(const sBaseCoord & info) const
 {
 	std::ofstream file(mURL, std::ios_base::app);
-	
+
 	if (true == file.is_open())
 	{
-		file << "Количество базовых координат:\n";
+		file << " Количество базовых координат:\n ";
 		file << "  " << info.countX << " "
-			          << info.countY << " "
-			          << info.countZ << "\n";
+			<< info.countY << " "
+			<< info.countZ << "\n ";
 
 		file.setf(std::ios::showpoint);
 		file.precision(3);
-		file << "Базовые координаты по оси X:\n";
+		file << " Базовые координаты по оси X:\n ";
 		for (int i = 0; i < info.coordX.size(); ++i)
 		{
-			file << info.coordX[i] << "\n";
-		}
-		
-		file << "Базовые координаты по оси Y:\n";
-		for (int i = 0; i < info.coordX.size(); ++i)
-		{
-			file << info.coordY[i] << "\n";
+			file << info.coordX[i] << "\n ";
 		}
 
-		file << "Базовые координаты по оси Z:\n";
-		for (int i = 0; i < info.coordX.size(); ++i)
+		file << " Базовые координаты по оси Y:\n ";
+		for (int i = 0; i < info.coordY.size(); ++i)
 		{
-			file << info.coordZ[i] << "\n";
+			file << info.coordY[i] << "\n ";
+		}
+
+		file << " Базовые координаты по оси Z:\n ";
+		for (int i = 0; i < info.coordZ.size(); ++i)
+		{
+			file << info.coordZ[i] << "\n ";
 		}
 	}
 
@@ -68,21 +69,21 @@ void CCUBSerializator::baseCoord(const sBaseCoord & info) const
 void CCUBSerializator::emptyBlocks(const std::vector<sBlockCoord> info) const
 {
 	std::ofstream file(mURL, std::ios_base::app);
-	
+
 	if (true == file.is_open())
 	{
-		file << "Число пустых блоков npust:\n";
+		file << " Число пустых блоков npust:\n ";
 		file << " " << info.size();
 
 
-		file << "\nКоординаты i-го пустого блока:\n\n";
-		
+		file << "\n Координаты i-го пустого блока:\n\n ";
+
 		for (int i = 0; i < info.size(); ++i)
 		{
-			file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n";
+			file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n ";
 			file << " " << info[i].startCoord.X << " " << info[i].endCoord.X << " "
-				        << info[i].startCoord.Y << " " << info[i].endCoord.Y << " "
-				        << info[i].startCoord.Z << " " << info[i].endCoord.Z << "\n";
+				<< info[i].startCoord.Y << " " << info[i].endCoord.Y << " "
+				<< info[i].startCoord.Z << " " << info[i].endCoord.Z << "\n ";
 		}
 	}
 
@@ -92,10 +93,10 @@ void CCUBSerializator::emptyBlocks(const std::vector<sBlockCoord> info) const
 void CCUBSerializator::mainTranscalancy(const double & transcalancy) const
 {
 	std::ofstream file(mURL, std::ios_base::app);
-	
+
 	if (true == file.is_open())
 	{
-		file << "Преобладающая теплопроводность E0:\n";
+		file << " Преобладающая теплопроводность E0:\n ";
 		file << " " << transcalancy;
 	}
 
@@ -108,19 +109,19 @@ void CCUBSerializator::anotherTranscalancy(const std::vector<sBoxInfo>& info) co
 
 	if (true == file.is_open())
 	{
-		file << "\nЧисло блоков с другой теплопроводностью:\n";
+		file << "\n Число блоков с другой теплопроводностью:\n ";
 		file << " " << info.size();
 
 
-		file << "\nКоординаты i-го блока:\n\n";
+		file << "\n Координаты i-го блока:\n\n ";
 
 		for (int i = 0; i < info.size(); ++i)
 		{
-         file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n";
-         file << " " << info[i].coord.startCoord.X << " " << info[i].coord.endCoord.X << " "
-            << info[i].coord.startCoord.Y << " " << info[i].coord.endCoord.Y << " "
-            << info[i].coord.startCoord.Z << " " << info[i].coord.endCoord.Z << " "
-            << info[i].value << "\n";
+			file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n ";
+			file << " " << info[i].coord.startCoord.X << " " << info[i].coord.endCoord.X << " "
+				<< info[i].coord.startCoord.Y << " " << info[i].coord.endCoord.Y << " "
+				<< info[i].coord.startCoord.Z << " " << info[i].coord.endCoord.Z << " "
+				<< info[i].value << "\n";
 		}
 	}
 
@@ -133,13 +134,13 @@ void CCUBSerializator::heatCoefficient(const std::vector<double>& coefficients) 
 
 	if (true == file.is_open())
 	{
-		file << "Коэффицикеты теплоотдачи:\n";		
-		
+		file << " Коэффицикеты теплоотдачи:\n ";
+
 		for (int i = 0; i < coefficients.size(); ++i)
 		{
-			file << coefficients[i] << " ";
+         file << coefficients[i] << " ";
 		}
-		file << "\n";
+		file << "\n ";
 	}
 
 	file.close();
@@ -151,13 +152,13 @@ void CCUBSerializator::holeHeatCoefficient(const std::vector<double>& coefficien
 
 	if (true == file.is_open())
 	{
-		file << "Коэффицикеты теплоотдачи с поверхности выемок:\n";
+		file << " Коэффицикеты теплоотдачи с поверхности выемок:\n ";
 
 		for (int i = 0; i < coefficients.size(); ++i)
 		{
-			file << coefficients[i] << " ";
+         file << coefficients[i] << " ";
 		}
-		file << "\n";
+		file << "\n ";
 	}
 
 	file.close();
@@ -169,19 +170,19 @@ void CCUBSerializator::coordNQ(const std::vector<sBoxInfo> &info) const
 
 	if (true == file.is_open())
 	{
-		file << "Число блоков с источниками NQ:\n";
+		file << " Число блоков с источниками NQ:\n ";
 		file << info.size();
 
 
-		file << "\nКоординаты i-го пустого источника и велечина Qv*10E-6:\n\n";
+		file << " \n Координаты i-го пустого источника и велечина Qv*10E-6:\n\n ";
 
-      for (int i = 0; i < info.size(); ++i)
+		for (int i = 0; i < info.size(); ++i)
 		{
-			file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n";
-         file << " " << info[i].coord.startCoord.X << " " << info[i].coord.endCoord.X << " "
-            << info[i].coord.startCoord.Y << " " << info[i].coord.endCoord.Y << " "
-            << info[i].coord.startCoord.Z << " " << info[i].coord.endCoord.Z << " "
-            << info[i].value << "\n";
+			file << "i = " << i << "x1 x2; y1 y2; z1 z2;\n ";
+			file << " " << info[i].coord.startCoord.X << " " << info[i].coord.endCoord.X << " "
+				<< info[i].coord.startCoord.Y << " " << info[i].coord.endCoord.Y << " "
+				<< info[i].coord.startCoord.Z << " " << info[i].coord.endCoord.Z << " "
+				<< info[i].value << "\n ";
 		}
 	}
 
@@ -194,7 +195,7 @@ void CCUBSerializator::flatNp(const int count) const
 
 	if (true == file.is_open())
 	{
-		file << "Число плоских источников Np1:\n";
+		file << " Число плоских источников Np1:\n ";
 		file << count;
 	}
 
@@ -207,9 +208,9 @@ void CCUBSerializator::temperature(const double& temp) const
 
 	if (true == file.is_open())
 	{
-		file << "\nТемпература среды:\n";
+		file << "\n Температура среды:\n ";
 		file << temp;
+		file << "\n";
 	}
-
 	file.close();
 }

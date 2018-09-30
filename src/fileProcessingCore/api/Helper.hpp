@@ -5,7 +5,7 @@
 
 namespace nSymbols
 {
-	const char SPACE    = ' ';
+	const char SPACE = ' ';
 	const char END_LINE = '\n';
 }
 
@@ -13,7 +13,7 @@ namespace nConstants
 {
 	const unsigned int NUMBER_FACES = 6;
 
-	const int STRING_IS_ABSENT      = -1;
+	const int STRING_IS_ABSENT = -1;
 }
 
 namespace exceptions

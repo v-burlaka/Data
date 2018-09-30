@@ -15,7 +15,7 @@ public:
    HeatCoefficientDialog(QWidget *parent, const char * headerLabelName);
    ~HeatCoefficientDialog();
 
-   void initCoefficient(std::vector<double> coefficients);
+   void initCoefficient(std::vector<double> &coefficients);
 
 private slots:
    void on_pushButton_clicked();
