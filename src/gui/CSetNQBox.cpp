@@ -283,7 +283,7 @@ void CSetNQBox::InputDialog::initWidgets()
    label_z2->setText(QApplication::translate("Form", "Z2 :", 0));
    if(true == mIsNeedTrancalancy)
    {
-      label_Trancalancy->setText(QApplication::translate("Form", "Qv*10E-6 :", 0));
+      label_Trancalancy->setText(QApplication::translate("Form", "Q (Вт*10E-6)/м³ :", 0));
    }
 }
 //-------------------------------------------------------------------------------------------------------------------
