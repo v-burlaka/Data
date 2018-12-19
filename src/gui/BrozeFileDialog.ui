@@ -108,7 +108,7 @@
           <string>Назад</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="OpenFile">
          <property name="text">
           <string>Открыть файл</string>
          </property>

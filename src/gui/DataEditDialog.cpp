@@ -21,8 +21,8 @@ DataEditDialog::DataEditDialog(QWidget *parent)
    , pSetXCoordDialog(new CSetCoordDialogCtrl(std::string("X"), this))
    , pSetYCoordDialog(new CSetCoordDialogCtrl(std::string("Y"), this))
    , pSetZCoordDialog(new CSetCoordDialogCtrl(std::string("Z"), this))
-   , settingHeatCoefficientDialog(new HeatCoefficientDialog(this, "Коэффициенты теплоотдачи"))
-   , settingHoleHeatCollection(new HeatCoefficientDialog(this, "Коэффициенты теплоотдачи с поверхности выемок:"))
+   , settingHeatCoefficientDialog(new HeatCoefficientDialog(this, "Коэффициенты теплоотдачи "))
+   , settingHoleHeatCollection(new HeatCoefficientDialog(this, "Коэффициенты теплоотдачи с поверхности выемок [Вт/(м²*°С)]:"))
 {
    ui->setupUi(this);
 

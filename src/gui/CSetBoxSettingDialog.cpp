@@ -303,7 +303,7 @@ void CSetBoxSettingDialog::InputDialog::initWidgets()
    label_z2->setText(QApplication::translate("Form", "Z2 :", 0));
    if(true == mIsNeedTrancalancy)
    {
-      label_Trancalancy->setText(QApplication::translate("Form", "\320\242\320\265\320\277\320\273\320\276\320\277\321\200\320\276\320\262\320\276\320\264\320\275\320\276\321\201\321\202\321\214 :", 0));
+      label_Trancalancy->setText(QApplication::translate("Form", "\320\242\320\265\320\277\320\273\320\276\320\277\321\200\320\276\320\262\320\276\320\264\320\275\320\276\321\201\321\202\321\214 [Вт/(м*°С)]:", 0));
    }
 }
 //-------------------------------------------------------------------------------------------------------------------

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>621</width>
-    <height>434</height>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,7 +31,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Число елементов по оси X :</string>
+            <string>Число элементов по оси X :</string>
            </property>
           </widget>
          </item>
@@ -64,7 +64,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Задать Координаты</string>
+            <string>Задать координаты</string>
            </property>
           </widget>
          </item>
@@ -114,7 +114,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Число елементов по оси Y :</string>
+            <string>Число элементов по оси Y :</string>
            </property>
           </widget>
          </item>
@@ -144,7 +144,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Задать Координаты</string>
+            <string>Задать координаты</string>
            </property>
           </widget>
          </item>
@@ -194,7 +194,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Число елементов по оси Z :</string>
+            <string>Число элементов по оси Z :</string>
            </property>
           </widget>
          </item>
@@ -224,7 +224,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Задать Координаты</string>
+            <string>Задать координаты</string>
            </property>
           </widget>
          </item>
@@ -341,7 +341,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Преобладающая теплопроводность :</string>
+            <string>Преобладающая теплопроводность [Вт/(м*°С)] :</string>
            </property>
           </widget>
          </item>
@@ -478,7 +478,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Коэфициенты теплоотдачи :</string>
+            <string>Коэфициенты теплоотдачи[Вт/(м²*°С)] :</string>
            </property>
           </widget>
          </item>

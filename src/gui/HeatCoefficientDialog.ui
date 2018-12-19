@@ -24,7 +24,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Коэффициенты теплоотдачи</string>
+        <string>Коэффициенты теплоотдачи [Вт/(м²*°С)]</string>
        </property>
       </widget>
      </item>
